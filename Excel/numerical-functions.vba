@@ -127,6 +127,30 @@ Else
 End If
 End Function
 
+'----------------------------
+' @name  getMin
+' @descr An attempt to avoid the WORKSHEET FUNCTION version of MIN
+' @usage Takes a range and returns the smallest number found (converts strings to DOUBLES)
+'----------------------------
+Function getMin(ByRef minRng As Range)
+Dim minFound
+minFound = MaxDouble
+For Each Cell In minRng
+    If IsNumeric(Cell) And Len(Cell) <> 0 Then
+        NumToCheck = CDbl(Cell)
+        If NumToCheck < minFound Then
+            minFound = NumToCheck
+        End If
+    End If
+Next
+If minFound = MaxDouble And countIn(minRng, "0") = 0 Then
+    getMin = "N/A"
+Else
+    getMin = minFound
+End If
+End Function
+
+
 ' MaxDouble and MinDouble from: http://www.tushar-mehta.com/publish_train/xl_vba_cases/1003%20MinMaxVals.shtml
 Function MinDouble() As Double
     MinDouble = -1.79769313486231E+308
