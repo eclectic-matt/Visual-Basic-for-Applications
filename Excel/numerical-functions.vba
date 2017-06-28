@@ -150,7 +150,6 @@ Else
 End If
 End Function
 
-
 ' MaxDouble and MinDouble from: http://www.tushar-mehta.com/publish_train/xl_vba_cases/1003%20MinMaxVals.shtml
 Function MinDouble() As Double
     MinDouble = -1.79769313486231E+308
@@ -161,3 +160,39 @@ Function MaxDouble() As Double
 End Function
 
 
+'----------------------------
+' @name  getRange
+' @descr An attempt to avoid the WORKSHEET FUNCTION version of Range (NUMERICAL)
+' @usage Takes a sheet-range and returns the range (diff between smallest and largest)
+'----------------------------
+Function getRange(ByRef rangeRng As Range)
+minVal = getMin(rangeRng)
+maxVal = getMax(rangeRng)
+If minVal = "N/A" Or maxVal = "N/A" Then
+    Rng = "N/A"
+Else
+    Rng = maxVal - minVal
+End If
+getRange = Rng
+End Function
+
+'----------------------------
+' @name  countIn
+' @descr An attempt to avoid the WORKSHEET FUNCTION version of CountIf
+' @usage Takes a range and returns the number of cells matched by the condition (all converted to strings)
+'----------------------------
+Function countIn(ByRef countRng As Range, condition)
+count = 0
+If Not VarType(condition) = vbString Then
+    condition = CStr(condition)
+End If
+For Each Cell In countRng
+    If Not VarType(Cell) = vbString Then
+        Cell = CStr(Cell)
+    End If
+    If Cell = condition Then
+        count = count + 1
+    End If
+Next
+countIn = count
+End Function
