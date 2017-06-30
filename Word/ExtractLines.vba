@@ -1,7 +1,7 @@
 'Picks up tagged lines and outputs at the bottom of the document
 Public Sub extractItemsWith()
   m = InputBox("Please enter the identifying text: " & vbNewLine & "e.g. 'Action: '")
-  If m = vbNo Or m = vbCancel Then
+  If m = "" Then
     Exit Sub
   Else
       strInput = m
