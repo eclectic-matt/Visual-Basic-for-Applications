@@ -1,11 +1,12 @@
 '---------------------------------------------------------------
 'Picks up tagged lines and outputs at the bottom of the document
+'---------------------------------------------------------------
 ' For the example document below
 ' If you call extractItemsWith and input "Action"
 ' You would get additional lines at the bottom with
-' Action: FIRST
-' Action: SECOND
-' Action: Third
+  ' Action: FIRST
+  ' Action: SECOND
+  ' Action: Third
 ' Which helps Secretaries to process minutes quicker!
 '---------------------------------------------------------------
 ' -- START OF DOCUMENT
@@ -19,6 +20,7 @@
 'Phasellus elementum elementum bibendum. Nullam in mattis ex. Pellentesque tempor lacus ultricies, tincidunt odio id, facilisis nulla. Curabitur mollis accumsan metus, ac dignissim lorem mollis sed. Ut sollicitudin massa quis rutrum ultricies. Vestibulum varius felis sit amet suscipit imperdiet. Integer sit amet purus odio. Sed et faucibus nulla. Vestibulum vitae urna sem. Phasellus malesuada, quam sit amet sollicitudin vehicula, mauris massa vestibulum neque, lacinia auctor arcu tortor id nunc. Morbi facilisis posuere dui a suscipit. Nunc dolor nibh, sodales auctor placerat a, laoreet non eros. Aenean euismod quam sit amet turpis imperdiet dictum.
 'ACTION: Third
 ' -- END OF DOCUMENT
+'---------------------------------------------------------------
 
 Public Sub extractItemsWith()
   m = InputBox("Please enter the identifying text: " & vbNewLine & "e.g. 'Action: '")
